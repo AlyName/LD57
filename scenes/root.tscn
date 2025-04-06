@@ -1,0 +1,202 @@
+[gd_scene load_steps=23 format=3 uid="uid://0ujkwgfgj0ut"]
+
+[ext_resource type="Script" uid="uid://b5q2nk3utr06c" path="res://scripts/root.gd" id="1_j5px3"]
+[ext_resource type="Script" uid="uid://wiuud4emfp7d" path="res://scripts/main.gd" id="2_lrqlo"]
+[ext_resource type="Script" uid="uid://b3pmsvbc478kn" path="res://scripts/controller.gd" id="2_twpsu"]
+[ext_resource type="Script" uid="uid://b1u3eabq1w17h" path="res://scripts/data_loader.gd" id="4_3hfy5"]
+[ext_resource type="Script" uid="uid://bbjlbqm1jatb8" path="res://scripts/camera.gd" id="5_7pvxh"]
+[ext_resource type="Script" uid="uid://da6cmmpkxehgj" path="res://scripts/input_detect.gd" id="6_y3xxt"]
+[ext_resource type="Script" uid="uid://dilnybggedkt1" path="res://scripts/particle_manager.gd" id="7_xsp7o"]
+[ext_resource type="Script" uid="uid://6s4svjmtyn82" path="res://scripts/ui.gd" id="8_l5cgh"]
+[ext_resource type="Theme" uid="uid://c7lw3m4l3vugi" path="res://main_theme.tres" id="9_vgks2"]
+[ext_resource type="Texture2D" uid="uid://c5qt72pqe0sb7" path="res://imgs/progress_arrow.png" id="10_dylgi"]
+[ext_resource type="Texture2D" uid="uid://bcx0qmm4n6p8k" path="res://imgs/e_bar.png" id="10_y3xxt"]
+[ext_resource type="Texture2D" uid="uid://brrirp2qfcdoh" path="res://imgs/dot.png" id="11_xsp7o"]
+[ext_resource type="Shader" uid="uid://imetbf5sf8j0" path="res://shaders/panel.gdshader" id="12_l5cgh"]
+[ext_resource type="StyleBox" uid="uid://dmc1kqotnna0u" path="res://laqe_panel.tres" id="13_l5cgh"]
+[ext_resource type="Texture2D" uid="uid://bwi30jehejyso" path="res://imgs/progress.png" id="14_vgks2"]
+[ext_resource type="Texture2D" uid="uid://tgyjcbq4elr8" path="res://imgs/block_heart.png" id="16_log26"]
+[ext_resource type="Texture2D" uid="uid://d3d6dbumi4orp" path="res://imgs/block_wing.png" id="17_gt4lb"]
+[ext_resource type="Script" uid="uid://cgwmnc3yo5p51" path="res://scripts/audio_manager.gd" id="18_gt4lb"]
+[ext_resource type="Texture2D" uid="uid://dqja6b7gl7rar" path="res://imgs/incase.png" id="19_ya6yc"]
+[ext_resource type="Texture2D" uid="uid://ng1lbdjje68k" path="res://imgs/wheel.png" id="20_mflgo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dylgi"]
+shader = ExtResource("12_l5cgh")
+shader_parameter/scanline_intensity = 0.05
+shader_parameter/noise_intensity = 0.02
+shader_parameter/vignette_power = 0.5
+shader_parameter/glow_radius = 0.1
+shader_parameter/modulate = Color(0.329412, 0.262745, 0.380392, 0.760784)
+
+[sub_resource type="GDScript" id="GDScript_34frw"]
+script/source = "extends Sprite2D
+
+
+func _process(delta: float) -> void:
+	rotate(delta)
+"
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_j5px3")
+
+[node name="Main" type="Node2D" parent="."]
+script = ExtResource("2_lrqlo")
+
+[node name="Controller" type="Node2D" parent="."]
+script = ExtResource("2_twpsu")
+
+[node name="DataLoader" type="Node" parent="."]
+script = ExtResource("4_3hfy5")
+
+[node name="Camera" type="Camera2D" parent="."]
+script = ExtResource("5_7pvxh")
+
+[node name="InputDetect" type="Node2D" parent="."]
+script = ExtResource("6_y3xxt")
+
+[node name="ParticleManager" type="Node2D" parent="."]
+script = ExtResource("7_xsp7o")
+
+[node name="UI" type="Node2D" parent="."]
+script = ExtResource("8_l5cgh")
+
+[node name="Progress" type="Sprite2D" parent="UI"]
+texture_filter = 1
+position = Vector2(759, 0)
+texture = ExtResource("14_vgks2")
+
+[node name="ProgressArrow" type="Sprite2D" parent="UI/Progress"]
+position = Vector2(-22, -168)
+texture = ExtResource("10_dylgi")
+
+[node name="ProgressNumber" type="Label" parent="UI/Progress"]
+offset_left = -32.0
+offset_top = -209.0
+offset_right = 28.0
+offset_bottom = -169.0
+theme = ExtResource("9_vgks2")
+text = "-3000m"
+
+[node name="Title" type="Label" parent="UI"]
+offset_left = -231.0
+offset_top = -350.0
+offset_right = 233.0
+offset_bottom = -320.0
+theme = ExtResource("9_vgks2")
+theme_override_font_sizes/font_size = 30
+text = "#1. Mind Gate"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="UI"]
+offset_left = -600.0
+offset_top = -300.0
+offset_right = 600.0
+offset_bottom = -277.0
+theme = ExtResource("9_vgks2")
+text = "Falling, falling down like stars..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIDown" type="Node2D" parent="UI"]
+
+[node name="EBar" type="Sprite2D" parent="UI/UIDown"]
+texture_filter = 1
+position = Vector2(-69, 25)
+texture = ExtResource("10_y3xxt")
+
+[node name="EBarFill" type="Sprite2D" parent="UI/UIDown/EBar"]
+texture_filter = 1
+position = Vector2(-29, 0)
+texture = ExtResource("11_xsp7o")
+offset = Vector2(3, 0)
+
+[node name="ResetButton" type="Button" parent="UI/UIDown"]
+texture_filter = 1
+offset_left = 31.0
+offset_top = -9.0
+offset_right = 123.0
+offset_bottom = 33.0
+theme = ExtResource("9_vgks2")
+text = " RESET "
+
+[node name="BlockDesc2" type="Label" parent="UI/UIDown"]
+texture_filter = 1
+offset_left = -174.0
+offset_top = 47.0
+offset_right = 173.0
+offset_bottom = 70.0
+theme = ExtResource("9_vgks2")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlockDesc" type="Label" parent="UI/UIDown"]
+texture_filter = 1
+offset_left = -101.0
+offset_top = -3.0
+offset_right = -51.0
+offset_bottom = 20.0
+theme = ExtResource("9_vgks2")
+text = "Torch"
+
+[node name="MissionBoard" type="Label" parent="UI"]
+offset_left = -748.0
+offset_top = 196.0
+offset_right = -318.0
+offset_bottom = 262.0
+theme = ExtResource("9_vgks2")
+text = "njknjknjknkjnknjknjk
+fenvjkdnfjkvnjkdfnjvjkdfnvdnfv
+fvnjdkkkkkkkkkddddddddddddddddddddddddddddd
+
+
+
+
+
+"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+offset_left = 10.0
+offset_top = -359.0
+offset_right = 522.0
+offset_bottom = 153.0
+theme = ExtResource("9_vgks2")
+
+[node name="Panel" type="Panel" parent="PanelContainer"]
+material = SubResource("ShaderMaterial_dylgi")
+layout_mode = 2
+theme_override_styles/panel = ExtResource("13_l5cgh")
+
+[node name="BlockHeart" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, -288)
+texture = ExtResource("16_log26")
+
+[node name="BlockWing" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-46, -294)
+texture = ExtResource("17_gt4lb")
+
+[node name="BlockWing2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(44, -294)
+scale = Vector2(-1, 1)
+texture = ExtResource("17_gt4lb")
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("18_gt4lb")
+
+[node name="Special" type="Node2D" parent="."]
+
+[node name="Incase" type="Sprite2D" parent="."]
+z_index = 4096
+texture = ExtResource("19_ya6yc")
+metadata/_edit_lock_ = true
+
+[node name="Wheel" type="Sprite2D" parent="."]
+position = Vector2(701, 349)
+texture = ExtResource("20_mflgo")
+script = SubResource("GDScript_34frw")

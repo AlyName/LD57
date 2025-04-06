@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://msaq5htq56cg"]
+
+[ext_resource type="Texture2D" uid="uid://dhc67vqp71oqt" path="res://imgs/cave_down.png" id="2_rawnq"]
+[ext_resource type="Texture2D" uid="uid://wjrywv38ptwg" path="res://imgs/cave_up.png" id="3_ywssb"]
+[ext_resource type="Shader" uid="uid://btc2x5i63e7u2" path="res://shaders/city.gdshader" id="4_5h2uv"]
+[ext_resource type="Theme" uid="uid://c7lw3m4l3vugi" path="res://main_theme.tres" id="4_ywssb"]
+
+[sub_resource type="GDScript" id="GDScript_rtd55"]
+script/source = "extends Node2D
+class_name Cave
+
+func appear_label():
+	var t_tween = Root.instance.new_tween()
+	t_tween.tween_interval(10)
+	t_tween.tween_property($Label,\"modulate\",Color(1,1,1,1),10)
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p12ek"]
+shader = ExtResource("4_5h2uv")
+shader_parameter/r_color = Color(0.690196, 0.831373, 0.894118, 0.121569)
+shader_parameter/r_speed = 0.01
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rtd55"]
+shader = ExtResource("4_5h2uv")
+shader_parameter/r_color = Color(0.133235, 0.168364, 0.217612, 0.960784)
+shader_parameter/r_speed = -0.02
+shader_parameter/alpha = 1.0
+
+[node name="Cave" type="Node2D"]
+script = SubResource("GDScript_rtd55")
+
+[node name="CaveDown" type="Sprite2D" parent="."]
+modulate = Color(0.690932, 0.831123, 0.893416, 0.121569)
+z_index = -15
+material = SubResource("ShaderMaterial_p12ek")
+position = Vector2(1, 222)
+texture = ExtResource("2_rawnq")
+
+[node name="CaveUp" type="Sprite2D" parent="."]
+z_index = -15
+material = SubResource("ShaderMaterial_rtd55")
+position = Vector2(0, -221)
+texture = ExtResource("3_ywssb")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -84.0
+offset_top = 375.0
+offset_right = 96.0
+offset_bottom = 398.0
+theme = ExtResource("4_ywssb")
+theme_override_font_sizes/font_size = 20
+text = "DO - MI - SO - #DO"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cukoaffayp1t4"]
+
+[ext_resource type="Texture2D" uid="uid://boax1grb8prep" path="res://imgs/star.png" id="1_5mtqn"]
+[ext_resource type="Material" uid="uid://cnnpj7yyieuiq" path="res://scenes/particle_small.tres" id="2_h47jy"]
+
+[node name="ParticleSmall" type="GPUParticles2D"]
+amount = 16
+texture = ExtResource("1_5mtqn")
+lifetime = 3.0
+process_material = ExtResource("2_h47jy")

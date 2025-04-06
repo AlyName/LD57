@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=3 uid="uid://0ujkwgfgj0ut"]
+
+[ext_resource type="Script" uid="uid://b5q2nk3utr06c" path="res://scripts/root.gd" id="1_j5px3"]
+[ext_resource type="Script" uid="uid://wiuud4emfp7d" path="res://scripts/main.gd" id="2_lrqlo"]
+[ext_resource type="Script" uid="uid://b3pmsvbc478kn" path="res://scripts/controller.gd" id="2_twpsu"]
+[ext_resource type="Script" uid="uid://b1u3eabq1w17h" path="res://scripts/data_loader.gd" id="4_3hfy5"]
+[ext_resource type="Script" uid="uid://bbjlbqm1jatb8" path="res://scripts/camera.gd" id="5_7pvxh"]
+[ext_resource type="Script" uid="uid://da6cmmpkxehgj" path="res://scripts/input_detect.gd" id="6_y3xxt"]
+[ext_resource type="Script" uid="uid://dilnybggedkt1" path="res://scripts/particle_manager.gd" id="7_xsp7o"]
+[ext_resource type="Script" uid="uid://6s4svjmtyn82" path="res://scripts/ui.gd" id="8_l5cgh"]
+[ext_resource type="Theme" uid="uid://c7lw3m4l3vugi" path="res://main_theme.tres" id="9_vgks2"]
+[ext_resource type="Texture2D" uid="uid://bcx0qmm4n6p8k" path="res://imgs/e_bar.png" id="10_y3xxt"]
+[ext_resource type="Texture2D" uid="uid://brrirp2qfcdoh" path="res://imgs/dot.png" id="11_xsp7o"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_j5px3")
+
+[node name="Main" type="Node2D" parent="."]
+script = ExtResource("2_lrqlo")
+
+[node name="Controller" type="Node2D" parent="."]
+script = ExtResource("2_twpsu")
+
+[node name="DataLoader" type="Node" parent="."]
+script = ExtResource("4_3hfy5")
+
+[node name="Camera" type="Camera2D" parent="."]
+script = ExtResource("5_7pvxh")
+
+[node name="InputDetect" type="Node2D" parent="."]
+script = ExtResource("6_y3xxt")
+
+[node name="ParticleManager" type="Node2D" parent="."]
+script = ExtResource("7_xsp7o")
+
+[node name="UI" type="Node2D" parent="."]
+script = ExtResource("8_l5cgh")
+
+[node name="Title" type="Label" parent="UI"]
+offset_left = -231.0
+offset_top = -335.0
+offset_right = 233.0
+offset_bottom = -305.0
+theme = ExtResource("9_vgks2")
+theme_override_font_sizes/font_size = 30
+text = "#1. Mind Gate"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="UI"]
+offset_left = -232.0
+offset_top = -300.0
+offset_right = 232.0
+offset_bottom = -277.0
+theme = ExtResource("9_vgks2")
+text = "Falling, falling down like stars..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIDown" type="Node2D" parent="UI"]
+
+[node name="EBar" type="Sprite2D" parent="UI/UIDown"]
+texture_filter = 1
+position = Vector2(-56, 0)
+texture = ExtResource("10_y3xxt")
+
+[node name="EBarFill" type="Sprite2D" parent="UI/UIDown/EBar"]
+texture_filter = 1
+position = Vector2(-29, 0)
+texture = ExtResource("11_xsp7o")
+offset = Vector2(3, 0)
+
+[node name="ResetButton" type="Button" parent="UI/UIDown"]
+texture_filter = 1
+offset_left = 19.0
+offset_top = -30.0
+offset_right = 131.0
+offset_bottom = 12.0
+theme = ExtResource("9_vgks2")
+text = "  RESET  "
+
+[node name="BlockDesc" type="Label" parent="UI/UIDown"]
+texture_filter = 1
+offset_left = -88.0
+offset_top = -28.0
+offset_right = -38.0
+offset_bottom = -5.0
+theme = ExtResource("9_vgks2")
+text = "Torch"
+
+[node name="MissionBoard" type="Label" parent="UI"]
+offset_left = -748.0
+offset_top = 196.0
+offset_right = -318.0
+offset_bottom = 262.0
+theme = ExtResource("9_vgks2")
+text = "njknjknjknkjnknjknjk
+fenvjkdnfjkvnjkdfnjvjkdfnvdnfv
+fvnjdkkkkkkkkkddddddddddddddddddddddddddddd
+
+
+
+
+
+"

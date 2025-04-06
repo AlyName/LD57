@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://tp4lg7i8iliw"]
+
+[ext_resource type="SpriteFrames" uid="uid://bufoq1sytl42r" path="res://imgs/anims/laqe.tres" id="1_vxmud"]
+
+[sub_resource type="Animation" id="Animation_vxmud"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("End2/AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jm2po"]
+_data = {
+&"new_animation": SubResource("Animation_vxmud")
+}
+
+[node name="End2" type="AnimationPlayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_jm2po")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_vxmud")
+animation = &"2"
+frame_progress = 0.938763

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ev88wcowi12l"]
+
+[ext_resource type="Shader" uid="uid://unyvr2dosrig" path="res://shaders/carpet.gdshader" id="1_y22cx"]
+[ext_resource type="Texture2D" uid="uid://bymebesaasbju" path="res://imgs/white_bg.png" id="2_w34tr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y22cx"]
+shader = ExtResource("1_y22cx")
+shader_parameter/grid_size = 0.025
+shader_parameter/color_1 = Color(0.0876293, 0.0756932, 0.12701, 1)
+shader_parameter/color_2 = Color(0.109414, 0.0735262, 0.118723, 1)
+
+[node name="Carpet" type="TextureRect"]
+material = SubResource("ShaderMaterial_y22cx")
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = 1150.0
+mouse_filter = 2
+texture = ExtResource("2_w34tr")

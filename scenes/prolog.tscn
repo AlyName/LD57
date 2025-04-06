@@ -1,0 +1,181 @@
+[gd_scene load_steps=17 format=3 uid="uid://ca2hyx21o8x8t"]
+
+[ext_resource type="Texture2D" uid="uid://bymebesaasbju" path="res://imgs/white_bg.png" id="1_wou21"]
+[ext_resource type="SpriteFrames" uid="uid://brfo2hp2vg42s" path="res://imgs/anims/albedo.tres" id="2_it3kd"]
+[ext_resource type="Script" uid="uid://brkc8vcq22l6k" path="res://scripts/walk_forward.gd" id="3_8hbm2"]
+[ext_resource type="SpriteFrames" uid="uid://bufoq1sytl42r" path="res://imgs/anims/laqe.tres" id="4_wtnsw"]
+[ext_resource type="FontFile" uid="uid://b2fbqrmmuxl8b" path="res://fusion-pixel-10px-monospaced-latin.ttf" id="6_8hbm2"]
+
+[sub_resource type="GDScript" id="GDScript_it3kd"]
+script/source = "extends Node2D
+
+func _ready() -> void:
+	$AnimationPlayer.play(\"new_animation\")
+"
+
+[sub_resource type="GDScript" id="GDScript_8hbm2"]
+script/source = "extends AnimatedSprite2D
+
+
+var ni
+func _ready() -> void:
+	ni = 1
+	self.frame_changed.connect(func():
+		ni += 1
+		self.position += Vector2.RIGHT * 50
+	)
+"
+
+[sub_resource type="Animation" id="Animation_gdits"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-909, 317)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_0i04a"]
+resource_name = "new_animation"
+length = 16.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(6.6, 8.13333, 10.1, 11.6333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-909, 217), Vector2(-361.5, 250), Vector2(356.333, 210), Vector2(916, 226)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.13333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"run"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 13.0697, 14),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5sx0f"]
+_data = {
+&"RESET": SubResource("Animation_gdits"),
+&"new_animation": SubResource("Animation_0i04a")
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wtnsw"]
+load_path = "res://.godot/imported/big_border.png-218cd4fee40b31f3907927b8594576b6.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vgks2"]
+texture = SubResource("CompressedTexture2D_wtnsw")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(1, 1, 1, 0.576471)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0i04a"]
+load_path = "res://.godot/imported/big_border.png-218cd4fee40b31f3907927b8594576b6.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jrhyn"]
+texture = SubResource("CompressedTexture2D_0i04a")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_log26"]
+texture = SubResource("CompressedTexture2D_wtnsw")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
+[sub_resource type="Theme" id="Theme_gdits"]
+default_font = ExtResource("6_8hbm2")
+default_font_size = 24
+Button/colors/font_hover_color = Color(0.94902, 0.94902, 0.94902, 0.505882)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/hover = SubResource("StyleBoxTexture_vgks2")
+Button/styles/normal = SubResource("StyleBoxTexture_jrhyn")
+Button/styles/pressed = SubResource("StyleBoxTexture_log26")
+Label/fonts/font = ExtResource("6_8hbm2")
+
+[node name="Prolog" type="Node2D"]
+script = SubResource("GDScript_it3kd")
+
+[node name="WhiteBg" type="Sprite2D" parent="."]
+texture = ExtResource("1_wou21")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-763, 248)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_it3kd")
+animation = &"run"
+frame_progress = 0.550112
+script = ExtResource("3_8hbm2")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-909, 317)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("4_wtnsw")
+autoplay = "default"
+frame_progress = 0.582453
+script = SubResource("GDScript_8hbm2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5sx0f")
+}
+
+[node name="Text" type="Label" parent="."]
+offset_left = -319.0
+offset_top = -26.0
+offset_right = 339.0
+offset_bottom = 3.0
+theme = SubResource("Theme_gdits")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "How far can a human heart wander?"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,20 @@
+id,type,sprite_path,script_path,color,name,desc
+1,block_empty,,,,Empty,Literally Nothing.
+2,block_heart,,,FF99CC,Heart,Just a heart.
+3,block_rotate,,,C5F155,Clover,Whoosh~~
+4,block_light,,,FFD857,Torch,Light up at a direction.
+5,block_arrow,,,FFBE85,Arrow,It's a lazer actually.
+6,block_bulb,,,FFD857,Bulb,Brightens all.
+7,block_ladder,,,FF976B,Ladder,Climb up and down.
+8,block_book,,,C5F155,Book,Someone is collecting them.
+9,block_paperplane,,,,Paperplane,Ouch!
+10,block_umbrella,,,FFB3B8,Umbrella,Fly~ fly~
+11,block_fish,,,A3EDFA,Fish,Swim around.
+12,block_cat,,,,Guardian,What's this?
+13,block_dew,,,,Dew,
+14,block_chest,,,,Chest,
+15,block_paper,,,,Paper,
+16,block_pawn,,,,Pawn,"Attacks one square, but fragile."
+17,block_rook,,,,Rook,"Attacks a whole row, but fragile."
+18,block_note,,,,Note,
+19,block_wing,,,,Wing,Fill it with energy for something good.

@@ -1,0 +1,196 @@
+[gd_scene load_steps=29 format=3 uid="uid://b74ldevdcwvsd"]
+
+[ext_resource type="Texture2D" uid="uid://cple1mlao1i7" path="res://imgs/rain_drop.png" id="1_5mvay"]
+[ext_resource type="Shader" uid="uid://ctdpe8flk3u8j" path="res://shaders/fog.gdshader" id="2_rru6j"]
+[ext_resource type="Texture2D" uid="uid://bymebesaasbju" path="res://imgs/white_bg.png" id="3_j8tiy"]
+[ext_resource type="Shader" uid="uid://btc2x5i63e7u2" path="res://shaders/city.gdshader" id="4_7bqv2"]
+[ext_resource type="Texture2D" uid="uid://rnbmen3wbl3f" path="res://imgs/city.png" id="5_0q17u"]
+[ext_resource type="Shader" uid="uid://co5gysus588fk" path="res://shaders/outer_glow.gdshader" id="6_wealb"]
+[ext_resource type="Texture2D" uid="uid://cmatlikhixca4" path="res://imgs/sitting.png" id="7_xfcrv"]
+[ext_resource type="Texture2D" uid="uid://dal6d2sl82ob3" path="res://imgs/city_wave.png" id="8_0q17u"]
+[ext_resource type="Shader" uid="uid://db33v25wl3kwg" path="res://scripts/wave.gdshader" id="9_wealb"]
+[ext_resource type="Texture2D" uid="uid://ddpls34yha2fj" path="res://imgs/thunder.png" id="10_xfcrv"]
+
+[sub_resource type="GDScript" id="GDScript_0q17u"]
+script/source = "extends Node2D
+class_name Rain
+
+@onready var thunder = $Thunder
+var dest_amount_ratio = 0.125
+var dest_speed_scale = 1.0
+var dest_fog_strength = 10.0
+var dest_fog_alpha = 15.0
+var dest_wave_alpha = 0.0
+var thunder_visible = false
+
+func _process(delta: float) -> void:
+	$GPUParticles2D.amount_ratio = lerp($GPUParticles2D.amount_ratio, dest_amount_ratio, 0.03)
+	$GPUParticles2D.speed_scale = lerp($GPUParticles2D.speed_scale, dest_speed_scale, 0.03)
+	var now_str = $TextureRect.material.get_shader_parameter(\"strength\")
+	$TextureRect.material.set_shader_parameter(\"strength\",lerp(now_str,dest_fog_strength,0.03))
+	thunder.visible = thunder_visible
+	var now_alpha = $TextureRect.material.get_shader_parameter(\"alpha_p\")
+	$TextureRect.material.set_shader_parameter(\"alpha_p\",lerp(now_alpha,dest_fog_alpha,0.03))
+	var now_w_alpha = $TextureRect2.material.get_shader_parameter(\"alpha\")
+	$TextureRect2.material.set_shader_parameter(\"alpha\",lerp(now_w_alpha,dest_wave_alpha,0.03))
+	var now_c_alpha = $CityWave.material.get_shader_parameter(\"alpha\")
+	$CityWave.material.set_shader_parameter(\"alpha\",lerp(now_c_alpha,dest_wave_alpha*5.0,0.03))
+	
+"
+
+[sub_resource type="Gradient" id="Gradient_j8tiy"]
+colors = PackedColorArray(1, 1, 1, 0.0470588, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5duj6"]
+gradient = SubResource("Gradient_j8tiy")
+
+[sub_resource type="Curve" id="Curve_ypopp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_7bqv2"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 1.88764), 0.0, 0.0, 0, 0, Vector2(1, 4), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_0q17u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_wealb"]
+curve_x = SubResource("Curve_ypopp")
+curve_y = SubResource("Curve_7bqv2")
+curve_z = SubResource("Curve_0q17u")
+
+[sub_resource type="Curve" id="Curve_xfcrv"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_p12ek"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1.65169), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_qvo7r"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_a6yge"]
+curve_x = SubResource("Curve_xfcrv")
+curve_y = SubResource("Curve_p12ek")
+curve_z = SubResource("Curve_qvo7r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i15lu"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1600, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 1.5
+initial_velocity_min = 400.0
+initial_velocity_max = 1200.0
+gravity = Vector3(0, 200, 0)
+scale_curve = SubResource("CurveXYZTexture_wealb")
+scale_over_velocity_curve = SubResource("CurveXYZTexture_a6yge")
+color = Color(0.782555, 0.857949, 0.894714, 1)
+color_initial_ramp = SubResource("GradientTexture1D_5duj6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5duj6"]
+shader = ExtResource("2_rru6j")
+shader_parameter/strength = 10.0
+shader_parameter/alpha_p = 15.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p12ek"]
+shader = ExtResource("4_7bqv2")
+shader_parameter/r_color = Color(0.690196, 0.831373, 0.894118, 0.121569)
+shader_parameter/r_speed = 0.01
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvo7r"]
+shader = ExtResource("6_wealb")
+shader_parameter/alpha = 1.0
+shader_parameter/rad = 4.0
+shader_parameter/intns = 1.0
+shader_parameter/r_color = Color(0.248191, 0.281204, 0.353818, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wealb"]
+shader = ExtResource("4_7bqv2")
+shader_parameter/r_color = Color(0.133235, 0.168364, 0.217612, 0.960784)
+shader_parameter/r_speed = -0.1
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfcrv"]
+shader = ExtResource("9_wealb")
+shader_parameter/alpha = 0.0
+shader_parameter/color_a = Color(0.240421, 0.325853, 0.524156, 1)
+shader_parameter/color_b = Color(0.293385, 0.286743, 0.441203, 1)
+shader_parameter/color_c = Color(0.062882, 0.0767651, 0.16036, 1)
+shader_parameter/color_d = Color(0.0653895, 0.15404, 0.260751, 1)
+
+[sub_resource type="GDScript" id="GDScript_xfcrv"]
+script/source = "extends Sprite2D
+
+func _process(delta: float):
+	if int(Root.instance.global_time*2) %2 == 0:
+		modulate.a = 0
+	else:
+		modulate.a = 1
+"
+
+[node name="Rain" type="Node2D"]
+script = SubResource("GDScript_0q17u")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -450)
+amount = 4000
+amount_ratio = 0.125
+texture = ExtResource("1_5mvay")
+lifetime = 3.0
+visibility_rect = Rect2(-800, -450, 1600, 900)
+process_material = SubResource("ParticleProcessMaterial_i15lu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_5duj6")
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = 450.0
+mouse_filter = 2
+texture = ExtResource("3_j8tiy")
+
+[node name="City" type="Sprite2D" parent="."]
+modulate = Color(0.690932, 0.831123, 0.893416, 0.121569)
+z_index = -15
+material = SubResource("ShaderMaterial_p12ek")
+position = Vector2(1, 222)
+texture = ExtResource("5_0q17u")
+
+[node name="Sitting" type="Sprite2D" parent="."]
+z_index = -15
+material = SubResource("ShaderMaterial_qvo7r")
+position = Vector2(11, 376)
+texture = ExtResource("7_xfcrv")
+
+[node name="CityWave" type="Sprite2D" parent="."]
+z_index = -15
+material = SubResource("ShaderMaterial_wealb")
+position = Vector2(0, 315)
+texture = ExtResource("8_0q17u")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = -50
+material = SubResource("ShaderMaterial_xfcrv")
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = 450.0
+mouse_filter = 2
+texture = ExtResource("3_j8tiy")
+
+[node name="Thunder" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -385)
+texture = ExtResource("10_xfcrv")
+script = SubResource("GDScript_xfcrv")

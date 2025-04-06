@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dakpjugrc2fr"]
+
+[ext_resource type="Texture2D" uid="uid://bw78wcnfhqyq6" path="res://imgs/hint4.png" id="1_581xj"]
+
+[resource]
+texture = ExtResource("1_581xj")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

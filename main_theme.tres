@@ -1,0 +1,53 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://c7lw3m4l3vugi"]
+
+[ext_resource type="FontFile" uid="uid://b2fbqrmmuxl8b" path="res://fusion-pixel-10px-monospaced-latin.ttf" id="1_470mv"]
+[ext_resource type="Texture2D" uid="uid://blh2twwhmxfq4" path="res://imgs/big_border.png" id="1_a2l2q"]
+[ext_resource type="Texture2D" uid="uid://bbgpdob1snvmb" path="res://imgs/dialog_border.png" id="2_0omi4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0omi4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_58jnp"]
+load_path = "res://.godot/imported/big_border.png-218cd4fee40b31f3907927b8594576b6.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_52mx2"]
+texture = SubResource("CompressedTexture2D_58jnp")
+texture_margin_left = 11.0
+texture_margin_top = 11.0
+texture_margin_right = 11.0
+texture_margin_bottom = 11.0
+modulate_color = Color(0.881937, 0.881937, 0.881937, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0omi4"]
+texture = ExtResource("1_a2l2q")
+texture_margin_left = 11.0
+texture_margin_top = 11.0
+texture_margin_right = 11.0
+texture_margin_bottom = 11.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0omi4"]
+load_path = "res://.godot/imported/big_border.png-218cd4fee40b31f3907927b8594576b6.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_466ly"]
+texture = SubResource("CompressedTexture2D_0omi4")
+texture_margin_left = 11.0
+texture_margin_top = 11.0
+texture_margin_right = 11.0
+texture_margin_bottom = 11.0
+modulate_color = Color(0.513233, 0.513233, 0.513233, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_58jnp"]
+texture = ExtResource("2_0omi4")
+texture_margin_left = 52.0
+texture_margin_top = 38.0
+texture_margin_right = 70.0
+texture_margin_bottom = 38.0
+
+[resource]
+default_font = ExtResource("1_470mv")
+default_font_size = 20
+Button/font_sizes/font_size = 20
+Button/styles/focus = SubResource("StyleBoxEmpty_0omi4")
+Button/styles/hover = SubResource("StyleBoxTexture_52mx2")
+Button/styles/normal = SubResource("StyleBoxTexture_0omi4")
+Button/styles/pressed = SubResource("StyleBoxTexture_466ly")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_58jnp")

@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cutrw4fv3ih56"]
+
+[ext_resource type="Texture2D" uid="uid://cp27v813tbisg" path="res://imgs/albedo4.png" id="1_k55xd"]
+
+[resource]
+texture = ExtResource("1_k55xd")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

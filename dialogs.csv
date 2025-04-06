@@ -1,0 +1,70 @@
+level,name,pos_x,pos_y,duration,content
+1,opening,160,-50,7,C_0_← Click on the charged block to activate its ability.
+1,opening2,-780,-200,7,C_0_Complete all objectives to clear the stage.
+2,opening,220,-400,17,"A_2_They say at the heart of the deep, deep woods lies the enormous, enormous library.\n"
+2,opening,220,-400,17,"A_9_They say within it dwells a spirit-god -\n"
+2,opening,220,-400,17,"A_13_who can lay bare every human heart."
+2,book2,-780,-400,10,A_1_They say those who brave the forest come here -\n
+2,book2,-780,-400,10,A_5_to face all that lurks within themselves.
+2,book3,220,-400,20,A_1_They say—\n
+2,book3,220,-400,20,"B_3_...who's this weirdo talking to herself? \n"
+2,book3,220,-400,20,A_7_GASP! You're—\n
+2,book3,220,-400,20,B_10_...Hmm?\n
+2,book3,220,-400,20,"A_12_THE GREAT LIBRARY DEITY WHO KNOWS ALL HEARTS!! ヽ(°〇°)ﾉ\n"
+2,book3,220,-400,20,B_16_WAIT WAIT WHAT— I'M NOT!! STOP SAYING THAT!!WHAT THE HECK IS GOING ON (╯°□°)╯\n
+2,book5,-780,-400,10,"B_0_A-ah... I just sweep floors here...\n"
+2,book5,-780,-400,10,A_4_Ohh!!! magnificent Book Guardian~~\n
+2,book5,-780,-400,10,B_7_(Totally ignoring me!!) 
+2,final,150,-400,20,"A_2_They say when people forget things, the memories are just... hiding deeper inside? Not Disappearing? Right?\n"
+2,final,150,-400,20,B_8_Eh? Y-yeah.\n
+2,final,150,-400,20,A_11_OH WISE LIBRARY ANGEL!!! I LOST SOMETHING SUPER DUPER IMPORTANT!!! CAN YOU— CAN YOU DIG IT OUT FROM MY HEART?!!ヽ(°〇°)ﾉ\n
+2,final,150,-400,20,"B_18_WHAT THE— I'M NOT! I'M NOT!!!"
+3,opening,220,-400,18,"B_1_Okay fine, I'm not that so-called 'god' or whatever... but peeking into hearts? Yeah, I can do that a little. Just don't expect me to fix anything for you. This is just a casual favor, got it?\n"
+3,opening,220,-400,18,A_10_SO COOL!!! AS EXPECTED OF—\n
+3,opening,220,-400,18,B_13_I SAID I'M NOOOOT!!
+3,umbrella3,-780,-400,10,A_1_...Wow. It's raining.\n
+3,umbrella3,-780,-400,10,B_5_That's the rain in your heart. We're about 1km deep inside you right now.\n
+3,umbrella7,220,-400,20,A_1_WAAAH!! It's pouring now!!\n
+3,umbrella7,220,-400,20,"B_4_Habitually do I sound the depths of human hearts -"
+3,umbrella7,220,-400,20,"B_7_some stretch cloudless to the horizon,"
+3,umbrella7,220,-400,20,B_10_others know only the drumbeat of rain.\n
+3,umbrella7,220,-400,20,B_15_In your case... I really wonder what happened...
+3,final,-256,-400,16,B_2_So ...find what you lost yet?\n
+3,final,-256,-400,16,A_6_...Nope. (´-ω-`)\n
+3,final,-256,-400,16,B_9_Deeper we go then.\n
+3,final,-256,-400,16,A_12_AMAZING!!! TRULY THE—\n
+3,final,-256,-400,16,B_14_FOR THE LAST TIME— NOOOOOT!!!
+4,opening,220,-200,13,B_2_Ack— can't go further! Something's blocking the way.\n
+4,opening,220,-200,,A_6_What is it?\n
+4,opening,220,-200,,B_8_HOW SHOULD I KNOW?! IT'S YOUR OWN HEART-STUFF!! (╯‵□′)╯
+4,kitty,220,-200,18,A_1_Gasp! A kitty~~\n
+4,kitty,220,-200,,B_3_Whose cat is this? You know them?\n
+4,kitty,220,-200,,A_6_Nope~\n
+4,kitty,220,-200,,B_9_IT'S LITERALLY A CAT IN YOUR MEMORY!!! HOW DO YOU NOT—
+4,kitty,220,-200,,B_12_ANYway... maybe if we give snacks... it'll move?
+5,opening,220,-200,12,"B_1_Wow, how lucky. We're stuck again."
+5,opening,220,-200,,A_4_More kitties?\n
+5,opening,220,-200,,B_6_...a cave! With a mysterious door. And... some secret puzzle vibes!\n
+5,note2,220,-200,15,A_2_Are these... musical notes?\n
+5,note2,220,-200,,"B_4_Hey, any super memorable tunes in your life?\n"
+5,note2,220,-200,,A_7_Eh? Uhh... no idea? (´･_･`)\n
+5,note2,220,-200,,B_10_ (╯°□°)╯
+5,note4,220,-200,25,B_1_THINK HARDER!!! (╯°□°)╯\n
+5,note4,220,-200,,"A_4_A-ah! W-wait, I— I—"
+5,note4,220,-200,,"A_8_I only remember THIS! — do, mi, so, #do—\n"
+5,note4,220,-200,,B_12_Seriously?! Even a piano stool knows that chord!!
+5,note4,220,-200,,"B_16_But... ugh, fine. Let's try it... do, mi, so, #do—\ndo, mi, so, #do—\ndo, mi, so, #do—\n"
+5,final,-256,-400,12,"A_3_It worked?! ...Wait, this was from that one time I joined choir as a kid... (´⊙ω⊙`)"
+5,final,-256,-400,,B_8_What kind of chaotic heart-labyrinth is this...
+6,opening,220,-400,14,B_1_5000 meters. We actually hit the bottom... Your heart is so deep and so messy... Jeez... Found it yet?\n
+6,opening,220,-400,,A_5_That heart-shaped thing! I... I kinda remember this...!\n
+6,opening,220,-400,,B_9_Alright. Let's go light it up.
+6,heart,-780,-400,14,B_2_...Uh oh. What's wrong?\n
+6,heart,-780,-400,,A_6_Still can't remember... Everything feels so heavy...\n
+6,heart,-780,-400,,B_10_Hmm... Maybe look around for something to LIFT?
+6,final,-256,-400,20,"A_1_Aah! I think— I think I—!!"" (ﾉ≧∀≦)ﾉ"
+6,final,-256,-400,,A_3_...
+6,final,-256,-400,,A_5_I REMEMBER NOW!!!\n
+6,final,-256,-400,,B_7_So... what is it?\n
+6,final,-256,-400,,A_10_Something warm and light... like wings... that keeps you from falling...\n
+6,final,-256,-400,,"B_15_Well, then up we go....Seriously though, your heart is ridiculously deep..."
